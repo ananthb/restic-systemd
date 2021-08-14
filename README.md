@@ -19,3 +19,6 @@ Repeat these steps to setup multiple backup jobs
 
     sudo cp config.template /etc/restic/my-backup # edit this file with your config
     sudo systemctl enable restic-backup@my-backup.timer restic-prune@my-backup.timer
+
+---
+Copyright (c) 2021 Ananth Bhaskararaman
