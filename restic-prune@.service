@@ -1,0 +1,28 @@
+[Unit]
+Description=Prune %i restic repository
+After=network.target
+Wants=network.target
+
+[Service]
+Type=oneshot
+ExecStart=restic prune
+CacheDirectory=restic
+Environment=RESTIC_CACHE_DIR=/var/cache/restic
+ConfigurationDirectory=restic
+EnvironmentFile=/etc/restic/%i
+MemoryDenyWriteExecute=true
+LockPersonality=yes
+NoNewPrivileges=true
+PrivateTmp=yes
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service @chown
+SystemCallFilter=~@resources @privileged

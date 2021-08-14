@@ -1,0 +1,18 @@
+# restic manual: https://restic.readthedocs.io/en/stable/
+
+BACKUP_PATHS="/etc /home /var"
+BACKUP_EXCLUDES="--exclude .* --exclude-if-present test.out"
+
+# https://restic.readthedocs.io/en/stable/060_forget.html#removing-snapshots-according-to-a-policy
+RETENTION_DAYS=7
+RETENTION_WEEKS=4
+RETENTION_MONTHS=6
+RETENTION_YEARS=3
+
+RESTIC_REPOSITORY=<restic-repository>
+RESTIC_PASSWORD=<restic-password>
+
+# destination specific config
+# for example, backblaze b2 requires these environment variables
+B2_ACCOUNT_ID=<b2-account-id>
+B2_ACCOUNT_KEY=<b2-account-key>
